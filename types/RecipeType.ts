@@ -1,0 +1,60 @@
+export type RawRecipeType = {
+  amountIngredient0: number,
+  amountIngredient1: number,
+  amountIngredient2: number,
+  amountIngredient3: number,
+  amountIngredient4: number,
+  amountIngredient5: number,
+  amountIngredient6: number,
+  amountIngredient7: number,
+  amountIngredient8: number,
+  amountIngredient9: number,
+  amountResult: number,
+  id: number,
+  ingredient0: number,
+  ingredient1: number,
+  ingredient2: number,
+  ingredient3: number,
+  ingredient4: number,
+  ingredient5: number,
+  ingredient6: number,
+  ingredient7: number,
+  ingredient8: number,
+  ingredient9: number,
+  itemId: number,
+  job: string,
+  jobIcon: string,
+  jobLevel: string,
+  recipeBook: string,
+  recipeIngredient0: number,
+  recipeIngredient1: number,
+  recipeIngredient2: number,
+  recipeIngredient3: number,
+  recipeIngredient4: number,
+  recipeIngredient5: number,
+  recipeIngredient6: number,
+  recipeIngredient7: number,
+  recipeIngredient8: number,
+  recipeIngredient9: number,
+}
+
+export type IngredientType = {
+  itemId: number,
+  itemName: string,
+  itemIcon: string,
+  amount: number
+  gill: number,
+  gillTotal: number,
+}
+
+export type RecipeType = {
+  id: number,
+  itemName: string,
+  itemIcon: string,
+  amount: number,
+  job: string,
+  jobIcon: string,
+  ingredients: IngredientType[]
+  gillParOne: number,
+  totalGill: number
+}
