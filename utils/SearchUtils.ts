@@ -43,7 +43,7 @@ const getMarketData = async (items: ItemDataType[], dataCenter: string) => {
 const tradableItemsGenerated = (items: ItemDataType[], marketData: any) => {
   let tradableItems: ItemDataDetailType[] = []
   items.forEach((item) => {
-    if(marketData === undefined) {
+    if(marketData.items === undefined) {
       tradableItems.push({
         item: item,
         marketData: marketData
