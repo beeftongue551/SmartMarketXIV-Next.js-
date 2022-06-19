@@ -22,7 +22,7 @@ const Layout: NextPage<PageInfo> = (pageInfo) => {
         <meta name="description" content={pageInfo.description} />
       </Head>
       <Header></Header>
-      <main >{pageInfo.children}</main>
+      <main>{pageInfo.children}</main>
       <footer className="footer mt-4 py-3" style={bgBlue}>
         <div className="container text-center " style={{color: "white"}}>
           <span>(C) SQUARE ENIX CO., LTD. All Rights Reserved</span>
