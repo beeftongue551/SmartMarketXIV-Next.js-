@@ -13,11 +13,17 @@ const RecipeCard: NextPage<Props> = (props) => {
 
   const {recipeData} = props
 
+  /**
+   * レシピデータを空に変更しレシピカードを非表示にする
+   */
   const closeRecipeCard = () => {
     props.setRecipeData(resetRecipeData())
   }
 
 
+  /**
+   * 素材データリストを作成する
+   */
   const ingredientsList = (
     recipeData.ingredients.map((ingredient) => (
       <ListGroupItem key={ingredient.itemId}>

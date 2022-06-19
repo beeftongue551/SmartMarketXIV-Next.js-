@@ -1,5 +1,6 @@
 export const DATA_CENTERS = ['Mana', 'Gaia', 'Elemental'] //日本のDC
 
+/* クラスジョブ情報 */
 export const CLASS_JOBS = [
   {jobName: '全クラス', jobAbbreviation: ''},
   {jobName: '賢者', jobAbbreviation: 'SGE'},

@@ -1,11 +1,8 @@
-import {useRouter} from "next/router";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {Nav} from "react-bootstrap";
 
-const Header: React.FC = () => {
-  const {route: path} = useRouter()
+const Header: React.FC = (): JSX.Element => {
 
   const bgBlue = {
     backgroundColor: '#5383E8'

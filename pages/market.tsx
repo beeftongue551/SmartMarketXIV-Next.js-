@@ -17,6 +17,13 @@ const Market:NextPage = () => {
   const [pagination, setPagination] = useState<PaginationType>()
   const [searchData, setSearchData] = useState<SearchDataType>()
 
+  /**
+   * アイテム検索時に取得できる情報のupdateを行う
+   *
+   * @param itemData アイテム情報
+   * @param pagination ページネーション情報
+   * @param searchData 検索情報
+   */
   const updateEvent = (itemData: ItemDataDetailType[], pagination: PaginationType, searchData: SearchDataType) => {
     setItemsData(itemData)
     setPagination(pagination)

@@ -6,6 +6,9 @@ import NewsList from "../components/home/NewsList";
 export const useNews = () => {
   const [news, setNews] =useState<NewsDataType[]>([])
 
+  /**
+   * APIからお知らせ情報を取得する。
+   */
   useEffect(() => {
     const getNewsData = async () => {
       const newsData = await getNewsListLimit(3)

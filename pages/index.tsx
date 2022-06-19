@@ -7,6 +7,9 @@ import {useNews} from "../hooks/hooks";
 
 const Home: NextPage = () => {
 
+  /**
+   * ニュースリスト取得カスタムフックの呼び出し
+   */
   const news = useNews()
 
   return (

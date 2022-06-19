@@ -9,7 +9,7 @@ type CardData = {
   icon?: string
 }
 
-const HomeCard:NextPage<CardData> = (cardData) => {
+const HomeCard:NextPage<CardData> = (cardData): JSX.Element => {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>

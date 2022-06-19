@@ -3,6 +3,13 @@ import {IngredientType, RawRecipeType, RecipeType} from "../types/RecipeType";
 import {getItemByItemId} from "../api/beef/ItemApi";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
 
+/**
+ * APIからレシピ情報、アイテム情報の取得を行い、RecipeType型に変更を行う
+ *
+ * @see RecipeType
+ * @param recipeId レシピID
+ * @param dataCenter データセンタ
+ */
 export const getRecipe = async (recipeId: number, dataCenter: string): Promise<RecipeType> => {
   const rawRecipeData = await getRecipeByRecipeId(recipeId)
   const recipeData: RecipeType = <RecipeType>{}
@@ -40,12 +47,21 @@ export const getRecipe = async (recipeId: number, dataCenter: string): Promise<R
   return recipeData
 }
 
+/**
+ * レシピデータの初期化を行う
+ */
 export const resetRecipeData = ():RecipeType => {
   return {
     amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", job: "", jobIcon: "", totalGill: 0
   }
 }
 
+/**
+ * APIから取得した素材情報の生データから素材情報の整理を行う
+ *
+ * @param rawData 素材情報の生データ
+ * @param index インデックス番号
+ */
 const generatedIngredient = async (rawData: RawRecipeType, index: number): Promise<IngredientType> => {
   const ingredient: IngredientType = <IngredientType>{}
 

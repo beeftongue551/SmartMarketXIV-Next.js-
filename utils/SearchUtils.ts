@@ -1,5 +1,5 @@
 import {getTradableItemBySearchData, getTrebleItemByName} from "../api/beef/ItemApi";
-import {ItemDataDetailType, ItemDataType, MarketDataType} from "../types/ItemDataType";
+import {ItemDataDetailType, ItemDataType} from "../types/ItemDataType";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
 import {SearchDataType} from "../types/SearchDataType";
 import dayjs from "dayjs";

@@ -7,9 +7,9 @@ import axios, {AxiosResponse} from "axios";
  */
 export const getResponseByGet = async (url: string) => {
   let dataCash: any
-  await axios.get(url).then((response:AxiosResponse<any>) => {
+  await axios.get(url).then((response:AxiosResponse) => {
     return response.data
-  }).then((data:AxiosResponse<any>) => {
+  }).then((data:AxiosResponse) => {
     dataCash = data
   }).catch((error) => {
     console.error(error)
