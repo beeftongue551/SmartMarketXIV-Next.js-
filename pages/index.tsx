@@ -4,7 +4,6 @@ import Image from "next/image";
 import {Col, Container, Row} from "react-bootstrap";
 import HomeCard from "../components/home/HomeCard";
 import {useNews} from "../hooks/hooks";
-import NewsList from "../components/home/NewsList";
 
 const Home: NextPage = () => {
 
