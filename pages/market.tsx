@@ -30,7 +30,7 @@ const Market:NextPage = () => {
         <PageTitle title="Market" subTitle="マーケット検索" />
         <MarketSearch updateEvent={updateEvent} />
         <MarketList itemsData={itemsData} pagination={pagination} searchData={searchData} />
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Col xs="auto">
             <BeefPagination paginationData={pagination} searchData={searchData} updateEvent={updateEvent}  />
           </Col>
