@@ -15,6 +15,12 @@ const Document = () => {
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@beeftongue_ff14" />
+        <meta property="og:url" content="http://beeftongue551.top/" />
+        <meta property="og:title" content="SmartMarketXIV" />
+        <meta property="og:description" content="あなたのFF14生活のために アイテムの値段がだいたいわかるサイトSmartMarketXIV" />
+        <meta property="og:image" content="/twitter_card_image.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
