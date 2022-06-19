@@ -12,15 +12,23 @@ type Props = {
   dataCenter: string
   setRecipeData: Function
 }
-const MarketExpansionBar: NextPage<Props> = (props) => {
+const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
 
   const {item, market} = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
+  /**
+   * ExpansionBarの開閉状態を変更する
+   */
   const openMarket = () => {
     setIsOpen(!isOpen)
   }
 
+  /**
+   * クラフトレシピを取得し親コンポーネントに渡す
+   *
+   * @param recipeId レシピID
+   */
   const getRecipeData = async (recipeId: number) => {
     const recipeData: RecipeType = await getRecipe(recipeId, props.dataCenter)
     props.setRecipeData(recipeData)

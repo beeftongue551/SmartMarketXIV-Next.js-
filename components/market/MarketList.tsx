@@ -29,16 +29,6 @@ const MarketList: NextPage<ListData> = (props) => {
   }
 
   const itemsData: ItemDataDetailType[] = props.itemsData || []
-  const pagination:PaginationType = props.pagination || {
-    page: 0,
-    pageNext: 0,
-    pagePrev: 0,
-    pageTotal: 0,
-    resultsParPage: 0,
-    resultsTotal: 0,
-  }
-
-
 
   const listItems = (
     itemsData.map((itemData) =>
@@ -50,6 +40,7 @@ const MarketList: NextPage<ListData> = (props) => {
       />
     )
   )
+
  return(
    <div>
      <Stack gap={2}>

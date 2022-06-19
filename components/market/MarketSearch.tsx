@@ -1,12 +1,10 @@
 import {NextPage} from "next";
 import React, {useState} from "react";
-import {Button, Card, Col, Form, Modal, Row, Spinner} from "react-bootstrap";
+import {Button, Card, Col, Form, Row} from "react-bootstrap";
 import InputDataCenter from "../input/InputDataCenter";
 import {SearchDataType} from "../../types/SearchDataType";
 import {searchEvent} from "../../utils/SearchUtils";
-import Loading from "../other/Loading";
 import InputJob from "../input/InputJob";
-import {event} from "next/dist/build/output/log";
 
 type SearchEvent = {
   updateEvent: Function
@@ -29,30 +27,16 @@ const MarketSearch: NextPage<SearchEvent> = (props) => {
   }
 
   const [jobLevel, setJobLevel] = useState(90)
-  const changeJobLevel = (jobLevel: number) => {
-    setJobLevel(jobLevel)
-  }
 
   const [isDetail, setIsDetail] = useState<boolean>(false)
   const changeIsDetail = () => {
     setIsDetail(!isDetail)
   }
 
-  const [loading, setLoading] =useState<boolean>(false)
-  const loadingStart = () => {
-    setLoading(true)
-  }
-  const loadingEnd = () => {
-    setLoading(false)
-  }
-
   /**
    * アイテム検索を実行する
    */
   const searchButtonEvent = async () => {
-    loadingStart()
-
-
     const searchData: SearchDataType = {
       dataCenter: dcName,
       isDetail: isDetail,
@@ -66,7 +50,6 @@ const MarketSearch: NextPage<SearchEvent> = (props) => {
     const pagination = itemData?.pagination
 
     props.updateEvent(tradableItems, pagination, searchData)
-    loadingEnd()
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
