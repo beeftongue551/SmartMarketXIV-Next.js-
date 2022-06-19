@@ -6,7 +6,12 @@ type ChangeEvent = {
   changeJob: Function
 }
 
-const InputJob:NextPage<ChangeEvent> = (props) => {
+const InputJob:NextPage<ChangeEvent> = (props:ChangeEvent): JSX.Element => {
+  /**
+   * ジョブの選択が変更された際に親コンポーネントに選択したジョブを渡す
+   *
+   * @param event コンポーネントイベント
+   */
   const changeJob = (event:any)  => {
     props.changeJob(event.target.value)
   }
