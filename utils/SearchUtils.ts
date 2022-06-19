@@ -4,15 +4,15 @@ import {getMarketByIDs} from "../api/universalis/MarketApi";
 import {SearchDataType} from "../types/SearchDataType";
 import dayjs from "dayjs";
 
-export const searchEvent = async (searchData: SearchDataType) => {
+export const searchEvent = async (searchData: SearchDataType, page:number = 1) => {
   if(searchData.isDetail) {
-    return await searchDetail(searchData)
+    return await searchDetail(searchData, page)
   }
   if(searchData.itemName === '' || searchData.dataCenter === '') {
     return
   }
 
-  const itemsData = await  getTrebleItemByName(searchData.itemName)
+  const itemsData = await  getTrebleItemByName(searchData.itemName, page)
   const marketData = await getMarketData(itemsData.items, searchData.dataCenter)
   const tradableItems = tradableItemsGenerated(itemsData.items, marketData)
 
@@ -22,8 +22,8 @@ export const searchEvent = async (searchData: SearchDataType) => {
   }
 }
 
-const searchDetail = async (searchData: SearchDataType) => {
-  const itemsData = await getTradableItemBySearchData(searchData)
+const searchDetail = async (searchData: SearchDataType, page:number = 1) => {
+  const itemsData = await getTradableItemBySearchData(searchData, page)
   const marketData = await getMarketData(itemsData.items, searchData.dataCenter)
   const tradableItems: ItemDataDetailType[] = tradableItemsGenerated(itemsData.items, marketData)
   return {

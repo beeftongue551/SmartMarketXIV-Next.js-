@@ -8,6 +8,8 @@ import {SearchDataType} from "../types/SearchDataType";
 import PageTitle from "../components/other/PageTitle";
 import MarketList from "../components/market/MarketList";
 import styles from '../styles/Home.module.css'
+import BeefPagination from "../components/other/BeefPagination";
+import {Col, Row} from "react-bootstrap";
 
 const Market:NextPage = () => {
 
@@ -28,6 +30,11 @@ const Market:NextPage = () => {
         <PageTitle title="Market" subTitle="マーケット検索" />
         <MarketSearch updateEvent={updateEvent} />
         <MarketList itemsData={itemsData} pagination={pagination} searchData={searchData} />
+        <Row className="justify-content-md-center">
+          <Col xs="auto">
+            <BeefPagination paginationData={pagination} searchData={searchData} updateEvent={updateEvent}  />
+          </Col>
+        </Row>
       </Layout>
     </div>
   )
