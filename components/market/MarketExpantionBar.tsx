@@ -79,7 +79,8 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
             </Col>
             <Col sm={0} md={4}></Col>
             <Col sm={12} md={4}>
-              <button type="button" className="btn btn-success" onClick={() => getRecipeData(item.recipeId)}>レシピ表示</button>
+              {item.recipeId &&
+              <button type="button" className="btn btn-success" onClick={() => getRecipeData(item.recipeId)}>レシピ表示</button>}
             </Col>
             <span className={"text-end"} style={{color: 'gray'}}>更新時間: {market.lastUploadTime}</span>
           </Row>
