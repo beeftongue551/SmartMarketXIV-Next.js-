@@ -11,7 +11,7 @@ import styles from '../styles/Home.module.css'
 import BeefPagination from "../components/other/BeefPagination";
 import {Col, Row} from "react-bootstrap";
 
-const Market:NextPage = () => {
+const Market:NextPage = (): JSX.Element => {
 
   const [itemsData, setItemsData] = useState<ItemDataDetailType[]>()
   const [pagination, setPagination] = useState<PaginationType>()

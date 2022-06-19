@@ -5,7 +5,7 @@ type TitleProp = {
   subTitle: string
 }
 
-const PageTitle: NextPage<TitleProp> = (props) => {
+const PageTitle: NextPage<TitleProp> = (props: TitleProp): JSX.Element => {
   return (
     <>
       <h1 className="text-center">{props.title}</h1>

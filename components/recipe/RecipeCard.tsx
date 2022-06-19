@@ -9,7 +9,7 @@ type Props = {
   setRecipeData: Function
 }
 
-const RecipeCard: NextPage<Props> = (props) => {
+const RecipeCard: NextPage<Props> = (props: Props): JSX.Element => {
 
   const {recipeData} = props
 

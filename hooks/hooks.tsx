@@ -3,7 +3,7 @@ import {NewsDataType} from "../types/NewsDataType";
 import {getNewsListLimit} from "../api/beef/NewsApi";
 import NewsList from "../components/home/NewsList";
 
-export const useNews = () => {
+export const useNews = (): JSX.Element => {
   const [news, setNews] =useState<NewsDataType[]>([])
 
   /**

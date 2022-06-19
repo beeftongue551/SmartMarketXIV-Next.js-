@@ -14,7 +14,7 @@ type ListData = {
   searchData?: SearchDataType
 }
 
-const MarketList: NextPage<ListData> = (props) => {
+const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
 
   const [recipeData, setRecipeData] = useState<RecipeType>({
     amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", job: "", jobIcon: "", totalGill: 0

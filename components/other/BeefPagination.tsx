@@ -35,7 +35,7 @@ const BeefPagination: NextPage<PaginationProps> = (props: PaginationProps):JSX.E
    * 検索結果10件以内の場合は全ページを表示し
    * 10件より多い場合は表示ページに応じたページを表示する
    */
-  const pageItem = () => {
+  const pageItem = ():JSX.Element[] => {
     const items:JSX.Element[] = []
     if(paginationData !== undefined) {
       if (paginationData.pageTotal < 10) {

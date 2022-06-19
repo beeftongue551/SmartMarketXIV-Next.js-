@@ -10,7 +10,7 @@ type SearchEvent = {
   updateEvent: Function
 }
 
-const MarketSearch: NextPage<SearchEvent> = (props) => {
+const MarketSearch: NextPage<SearchEvent> = (props: SearchEvent): JSX.Element => {
   const [itemName, setItemName] = useState('')
   const changeItemName = (event:any) => {
     setItemName(event.target.value)

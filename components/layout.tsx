@@ -10,7 +10,7 @@ type PageInfo = {
   description: string
 }
 
-const Layout: NextPage<PageInfo> = (pageInfo) => {
+const Layout: NextPage<PageInfo> = (pageInfo: PageInfo): JSX.Element => {
   const bgBlue = {
     backgroundColor: '#5383E8'
   }
