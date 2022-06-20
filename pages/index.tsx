@@ -16,12 +16,14 @@ const Home: NextPage = () => {
     <div style={{backgroundColor: '#5383E8'}}>
       <Layout
         title="SmartMarketXIV"
-        description="SmartMarketXIVはクラフターを手助けする便利サイトを目指して作成されているサイトです。">
+        description="SmartMarketXIVはFF14の相場をパパッと確認するためのサイトです。売りたいアイテム買いたいアイテムを検索して相場をチラ見することができます。">
         <Image src="/topImage.png" alt="topページ画像" height={300} width={1980} objectFit="cover"/>
         <Container fluid>
           <Row>
             <Col className="text-center align-middle" style={{color: "white"}}>
-              <strong>SmartMarketXIV</strong>はクラフターを手助けする便利サイトを目指して作成されているサイトです。
+              <h1>SmartMarketXIV</h1>
+              <strong>SmartMarketXIV</strong>はFF14の相場をパパッと確認するためのサイトです。<br/>
+              売りたいアイテム買いたいアイテムを検索して相場をチラ見することができます。
             </Col>
           </Row>
           <br />
