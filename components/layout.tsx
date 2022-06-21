@@ -27,7 +27,7 @@ const Layout: NextPage<PageInfo> = (pageInfo: PageInfo): JSX.Element => {
         <div className="container text-center " style={{color: "white"}}>
           <span>(C) SQUARE ENIX CO., LTD. All Rights Reserved</span>
           <div style={{flexGrow:1}}></div>
-          <span>Author: @beeftongue_ff14</span>
+          <a href={"https://twitter.com/beeftongue_ff14"} style={{color : "inherit", textDecoration:"none"}}>Author: @beeftongue_ff14</a>
         </div>
       </footer>
     </div>
