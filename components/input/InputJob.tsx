@@ -12,7 +12,7 @@ const InputJob:NextPage<ChangeEvent> = (props:ChangeEvent): JSX.Element => {
    *
    * @param event コンポーネントイベント
    */
-  const changeJob = (event:any)  => {
+  const changeJob: (event: any) => void = (event:any)  => {
     props.changeJob(event.target.value)
   }
 

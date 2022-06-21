@@ -20,7 +20,7 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
   /**
    * ExpansionBarの開閉状態を変更する
    */
-  const openMarket = () => {
+  const openMarket: () => void = () => {
     setIsOpen(!isOpen)
   }
 
@@ -29,7 +29,7 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
    *
    * @param recipeId レシピID
    */
-  const getRecipeData = async (recipeId: number) => {
+  const getRecipeData: (recipeId: number) => Promise<void> = async (recipeId: number) => {
     const recipeData: RecipeType = await getRecipe(recipeId, props.dataCenter)
     props.setRecipeData(recipeData)
   }

@@ -8,7 +8,7 @@ type newsData = {
 }
 
 const NewsList: NextPage<newsData> = (props: newsData): JSX.Element => {
-  const NewsListItems = (
+  const NewsListItems: JSX.Element[] = (
     props.newsData.map((news: NewsDataType) =>
       <ListGroup.Item key={news.id}>
           <Badge bg="info">{news.newsType}</Badge>

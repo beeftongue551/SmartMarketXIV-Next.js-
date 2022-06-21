@@ -1,10 +1,12 @@
 import {NextPage} from "next";
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {Button, Card, Col, Form, Row} from "react-bootstrap";
 import InputDataCenter from "../input/InputDataCenter";
 import {SearchDataType} from "../../types/SearchDataType";
 import {searchEvent} from "../../utils/SearchUtils";
 import InputJob from "../input/InputJob";
+import {ItemDataDetailType} from "../../types/ItemDataType";
+import {PaginationType} from "../../types/PaginationType";
 
 type SearchEvent = {
   updateEvent: Function
@@ -12,7 +14,7 @@ type SearchEvent = {
 
 const MarketSearch: NextPage<SearchEvent> = (props: SearchEvent): JSX.Element => {
   const [itemName, setItemName] = useState('')
-  const changeItemName = (event:any) => {
+  const changeItemName: (event: React.ChangeEvent<HTMLInputElement>) => void = (event: ChangeEvent<HTMLInputElement>) => {
     setItemName(event.target.value)
   }
 
@@ -29,14 +31,14 @@ const MarketSearch: NextPage<SearchEvent> = (props: SearchEvent): JSX.Element =>
   const [jobLevel, setJobLevel] = useState(90)
 
   const [isDetail, setIsDetail] = useState<boolean>(false)
-  const changeIsDetail = () => {
+  const changeIsDetail: () => void = () => {
     setIsDetail(!isDetail)
   }
 
   /**
    * アイテム検索を実行する
    */
-  const searchButtonEvent = async () => {
+  const searchButtonEvent: () => Promise<void> = async () => {
     const searchData: SearchDataType = {
       dataCenter: dcName,
       isDetail: isDetail,
@@ -46,8 +48,8 @@ const MarketSearch: NextPage<SearchEvent> = (props: SearchEvent): JSX.Element =>
     }
     const itemData = await searchEvent(searchData)
 
-    const tradableItems = itemData?.tradableItem
-    const pagination = itemData?.pagination
+    const tradableItems: ItemDataDetailType[] | undefined = itemData?.tradableItem
+    const pagination: PaginationType = itemData?.pagination
 
     props.updateEvent(tradableItems, pagination, searchData)
   }
