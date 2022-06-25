@@ -1,4 +1,21 @@
-export const DATA_CENTERS = ['Mana', 'Gaia', 'Elemental'] //日本のDC
+export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental'] //日本のDC
+
+/* サーバー情報 */
+export const SERVERS: Map<string, string[]> = new Map<string, string[]>([
+  ['Mana', ['Anima', 'Asura', 'Belias', 'Chocobo', 'Hades', 'Ixion', 'Mandragora', 'Masamune', 'Pandaemonium', 'Shinryu', 'Titan']],
+  ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima', 'Valefor', 'Yojimbo', 'Zeromus']],
+  ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Ramuh", "Tonberry", "Typhon", "Unicorn"]]
+])
+
+/* サーバー情報 */
+export const NEW_SERVERS: Map<string, string[]> = new Map<string, string[]>([
+  ['Mana', ['Anima', 'Asura', 'Chocobo', 'Hades', 'Ixion', 'Masamune', 'Pandaemonium', 'Titan']],
+  ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima']],
+  ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Tonberry", "Typhon"]],
+  ['Meteor', ['Belias', 'Mandragora', 'Ramuh', 'Shinryu', 'Unicorn', 'Valefor', 'Yojimbo', 'Zeromus']]
+])
+
+
 
 /* クラスジョブ情報 */
 export const CLASS_JOBS = [
@@ -46,6 +63,6 @@ export const CLASS_JOBS = [
 ]
 
 /* APIアクセスURL */
-export const BEEF_API = 'http://beeftongue551.top:8080/'
-export const UNIVERSALIS_API_URL ='https://universalis.app/api/v2/'
-export const XIV_API_URL = 'https://xivapi.com/'
+export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+export const UNIVERSALIS_API_URL: string ='https://universalis.app/api/v2/'
+export const XIV_API_URL: string = 'https://xivapi.com/'
