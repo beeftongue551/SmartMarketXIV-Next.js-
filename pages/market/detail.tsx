@@ -19,6 +19,7 @@ const Detail: NextPage = ():JSX.Element => {
 
   return (
     <div className={styles.body}>
+
       <SelectServer dataCenter={selectedDataCenter} setServer={setServer} />
     </div>
   )

@@ -17,18 +17,20 @@ const SelectServer: NextPage<Props> = (props:Props): JSX.Element => {
   const serverButtons: JSX.Element[] = (
     servers.map((server: string) =>
       <Col className="m-0" style={{width: "100%", padding: "0px"}} key={server}>
-        <div className="btn btn-primary btn-block" style={{width: "100%", borderRadius: "0px"}} onClick={props.setServer(server)}>{server}</div>
+        <div
+          className="btn btn-primary btn-block"
+          style={{width: "100%", borderRadius: "0px", background: "#5383E8", color: "#FFF", border: "2px solid #5383E8"}}
+          onClick={props.setServer(server)}>{server}</div>
       </Col>
     )
   )
 
   return (
-    <Row>
-
+    <Row className="mx-auto" style={{width: "90%"}}>
       <Col className="m-0" style={{width: "100%", padding: "0px"}}>
         <div
-          className="btn btn-primary btn-block"
-          style={{width: "100%", borderRadius: "0px", minWidth: "100px"}}
+          className="btn btn-block"
+          style={{width: "100%", borderRadius: "0px", minWidth: "100px", background: "#5383E8", color: "#FFF", border: "2px solid #5383E8"}}
           onClick={props.setServer(dataCenter)}>
           <Globe width={20} height={20}/> {dataCenter}
         </div>
