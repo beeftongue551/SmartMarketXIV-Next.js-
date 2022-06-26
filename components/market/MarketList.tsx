@@ -30,7 +30,7 @@ const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
 
   const itemsData: ItemDataDetailType[] = props.itemsData || []
 
-  const listItems = (
+  const listItems: JSX.Element[] = (
     itemsData.map((itemData: ItemDataDetailType) =>
       <MarketExpansionBar market={itemData.marketData}
                           item={itemData.item}
