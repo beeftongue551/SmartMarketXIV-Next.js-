@@ -13,7 +13,7 @@ export type ItemDataType = {
 export type MarketDataType = {
   itemID: number,
   lastUploadTime: number | string,
-  listings: any[],
+  listings: ListingType[],
   recentHistory: any[],
   dcName: string,
   currentAveragePrice: number,
@@ -35,6 +35,27 @@ export type MarketDataType = {
   stackSizeHistogramNQ: any
   stackSizeHistogramHQ: any
   worldUploadTimes: any
+}
+
+type ListingType = {
+  "lastReviewTime": number,
+  "pricePerUnit": number,
+  "quantity": number,
+  "stainID": number,
+  "worldName": string | undefined,
+  "worldID": number | undefined,
+  "creatorName": string,
+  "creatorID": string,
+  "hq": boolean,
+  "isCrafted": boolean,
+  "listingID": null,
+  "materia": number[],
+  "onMannequin": boolean,
+  "retainerCity": number,
+  "retainerID": string,
+  "retainerName": string,
+  "sellerID": string,
+  "total": number
 }
 
 export type ItemDataDetailType = {
