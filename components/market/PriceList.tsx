@@ -16,7 +16,7 @@ const PriceList:NextPage<{itemId: number, worldOrDc: string}> = (props: {itemId:
       }
       element.push((
         <tr>
-          <td>{listing.hq && <Image  src="/hq.png" width={20} height={20}/>}</td>
+          <td>{listing.hq && <Image  src="/hq.png" width={20} height={20} alt="HQマーク"/>}</td>
           <td>{listing.worldName}</td>
           <td style={{color: "#4171d6"}}><b>{listing.pricePerUnit}</b></td>
           <td>{listing.quantity}</td>
