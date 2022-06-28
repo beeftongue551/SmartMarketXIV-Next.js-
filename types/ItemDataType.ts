@@ -37,7 +37,7 @@ export type MarketDataType = {
   worldUploadTimes: any
 }
 
-type ListingType = {
+export type ListingType = {
   "lastReviewTime": number,
   "pricePerUnit": number,
   "quantity": number,

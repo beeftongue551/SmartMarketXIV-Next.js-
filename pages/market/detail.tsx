@@ -6,6 +6,7 @@ import styles from '../../styles/Home.module.css'
 import ItemCard from "../../components/item/ItemCard";
 import {ItemDataType} from "../../types/ItemDataType";
 import {getItemByItemId} from "../../api/beef/ItemApi";
+import PriceList from "../../components/market/PriceList";
 
 const Detail: NextPage = ():JSX.Element => {
 
@@ -40,7 +41,7 @@ const Detail: NextPage = ():JSX.Element => {
       <ItemCard item={itemData} />
       <br/>
       <SelectServer dataCenter={selectedDataCenter} setServer={setServer} />
-
+      <PriceList itemId={itemData.id} worldOrDc={server} />
     </div>
   )
 }
