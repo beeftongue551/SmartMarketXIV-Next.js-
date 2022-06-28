@@ -19,7 +19,6 @@ const SelectServer: NextPage<Props> = (props:Props): JSX.Element => {
   const serverClickEvent = (server: string) => {
     props.setServer(server)
     setActive(server)
-    console.log(active)
   }
 
   const activeStyle = {
