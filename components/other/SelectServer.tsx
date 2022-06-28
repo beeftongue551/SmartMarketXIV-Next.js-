@@ -39,10 +39,8 @@ const SelectServer: NextPage<Props> = (props:Props): JSX.Element => {
 
   const setStyle = (server: string) => {
     if(server === active) {
-      console.log(active)
       return activeStyle
     } else {
-      console.log(active)
       return nonActiveStyle
     }
   }
