@@ -7,6 +7,7 @@ import ItemCard from "../../components/item/ItemCard";
 import {ItemDataType} from "../../types/ItemDataType";
 import {getItemByItemId} from "../../api/beef/ItemApi";
 import PriceList from "../../components/market/PriceList";
+import Layout from "../../components/layout";
 
 const Detail: NextPage = ():JSX.Element => {
 
@@ -38,10 +39,12 @@ const Detail: NextPage = ():JSX.Element => {
 
   return (
     <div className={styles.body}>
-      <ItemCard item={itemData} />
-      <br/>
-      <SelectServer dataCenter={selectedDataCenter} setServer={setServer} />
-      <PriceList itemId={itemData.id} worldOrDc={server} />
+      <Layout title={itemData.itemName} description={itemData.itemName + "のFF14内マーケットの詳細情報ページです"}>
+        <ItemCard item={itemData} />
+        <br/>
+        <SelectServer dataCenter={selectedDataCenter} setServer={setServer} />
+        <PriceList itemId={itemData.id} worldOrDc={server} />
+      </Layout>
     </div>
   )
 }
