@@ -5,6 +5,7 @@ import XivIcon from "../other/XivIcon";
 import {useState} from "react";
 import {getRecipe} from "../../utils/RecipeUtils";
 import {RecipeType} from "../../types/RecipeType";
+import {useRouter} from "next/router";
 
 type Props = {
   market: MarketDataType
@@ -16,12 +17,17 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
 
   const {item, market} = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const router = useRouter()
 
   /**
    * ExpansionBarの開閉状態を変更する
    */
   const openMarket: () => void = () => {
     setIsOpen(!isOpen)
+  }
+
+  const openMarketDetail: () => void = () => {
+    router.push("/market/detail?id=" + item.id)
   }
 
   /**
@@ -77,8 +83,8 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
             <Col sm={12} md={4}>
               平均価格: {(market.averagePrice + market.minPrice)/2}
             </Col>
-            <Col sm={0} md={4}></Col>
-            <Col sm={12} md={4}>
+            <Col sm={6} md={4}><button type="button" className="btn btn-success" onClick={() => openMarketDetail()}>マーケット詳細</button></Col>
+            <Col sm={6} md={4}>
               {item.recipeId &&
               <button type="button" className="btn btn-success" onClick={() => getRecipeData(item.recipeId)}>レシピ表示</button>}
             </Col>

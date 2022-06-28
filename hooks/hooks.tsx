@@ -4,7 +4,6 @@ import {getNewsListLimit} from "../api/beef/NewsApi";
 import NewsList from "../components/home/NewsList";
 import {MarketDataType} from "../types/ItemDataType";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
-import {type} from "os";
 
 export const useNews = (): JSX.Element => {
   const [news, setNews] =useState<NewsDataType[]>([])
@@ -23,28 +22,48 @@ export const useNews = (): JSX.Element => {
   return <NewsList newsData={news}></NewsList>
 }
 
-/**
- * アイテムIDからマーケット情報を取得する
- *
- * @param worldOrDc ワールド名 or データセンタ名
- * @param ids アイテムID
- */
-export const useMarket = (worldOrDc: string, ids: number | number[]) => {
-  const [market, setMarket] = useState<MarketDataType>()
+export const useMarket: (worldOrDc: string, ids: (number | number[])) => MarketDataType = (worldOrDc: string, ids: number | number[]) => {
+  const [market, setMarket] = useState<MarketDataType>({
+      averagePrice: 0,
+      averagePriceHQ: 0,
+      averagePriceNQ: 0,
+      currentAveragePrice: 0,
+      currentAveragePriceHQ: 0,
+      currentAveragePriceNQ: 0,
+      dcName: "",
+      hqSaleVelocity: 0,
+      itemID: 0,
+      lastUploadTime: 0,
+      listings: [],
+      maxPrice: 0,
+      maxPriceHQ: 0,
+      maxPriceNQ: 0,
+      minPrice: 0,
+      minPriceHQ: 0,
+      minPriceNQ: 0,
+      nqSaleVelocity: 0,
+      recentHistory: [],
+      regularSaleVelocity: 0,
+      stackSizeHistogram: undefined,
+      stackSizeHistogramHQ: undefined,
+      stackSizeHistogramNQ: undefined,
+      worldUploadTimes: undefined
+  })
 
   useEffect(() => {
     const itemIds: number[] = []
     if(typeof ids === "number") {
       itemIds.push(ids)
     } else {
-      ids.map((id) => {
+      ids.map((id: number) => {
         itemIds.push(id)
       })
     }
-    getMarketByIDs(itemIds, worldOrDc).then((marketData: MarketDataType) => {
+    getMarketByIDs(itemIds, worldOrDc).then((marketData) => {
       setMarket(marketData)
     })
-  }, [worldOrDc, ids])
+  },[ids, worldOrDc])
+
 
   return market
 }
