@@ -10,12 +10,12 @@ const PriceList:NextPage<{itemId: number, worldOrDc: string}> = (props: {itemId:
 
   const priceList:() => JSX.Element[] = () => {
     const element: JSX.Element[] = []
-    marketData.listings.map((listing: ListingType) => {
+    marketData.listings.map((listing: ListingType, index: number) => {
       if(listing.worldName === undefined) {
         listing.worldName = worldOrDc
       }
       element.push((
-        <tr>
+        <tr key={index}>
           <td>{listing.hq && <Image  src="/hq.png" width={20} height={20} alt="HQマーク"/>}</td>
           <td>{listing.worldName}</td>
           <td style={{color: "#4171d6"}}><b>{listing.pricePerUnit}</b></td>

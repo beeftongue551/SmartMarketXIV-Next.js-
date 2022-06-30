@@ -1,5 +1,5 @@
 import {getTradableItemBySearchData, getTrebleItemByName} from "../api/beef/ItemApi";
-import {ItemDataDetailType, ItemDataType} from "../types/ItemDataType";
+import {ItemDataDetailType, ItemDataType, ListingType} from "../types/ItemDataType";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
 import {SearchDataType} from "../types/SearchDataType";
 import dayjs from "dayjs";
@@ -60,12 +60,32 @@ const tradableItemsGenerated = (items: ItemDataType[], marketData: any) => {
 }
 
 const marketCheck = (items: ItemDataDetailType[]) => {
+  const emptyListing: ListingType = {
+    creatorID: "",
+    creatorName: "",
+    hq: false,
+    isCrafted: false,
+    lastReviewTime: 0,
+    listingID: null,
+    materia: [],
+    onMannequin: false,
+    pricePerUnit: 0,
+    quantity: 0,
+    retainerCity: 0,
+    retainerID: "",
+    retainerName: "",
+    sellerID: "",
+    stainID: 0,
+    total: 0,
+    worldID: undefined,
+    worldName: 'None'
+  }
   for (let i = 0; i < items.length; i++) {
     if (items[i].marketData === undefined) {
       items[i].marketData.minPrice = 0
       items[i].marketData.averagePrice = 0
       items[i].marketData.listings = []
-      items[i].marketData.listings.push({worldName: 'None'})
+      items[i].marketData.listings.push(emptyListing)
       continue
     }
     const date = dayjs(items[i].marketData.lastUploadTime)
@@ -74,7 +94,7 @@ const marketCheck = (items: ItemDataDetailType[]) => {
     if (items[i].marketData.listings.length === 0) {
       items[i].marketData.minPrice = 0
       items[i].marketData.averagePrice = 0
-      items[i].marketData.listings.push({worldName: 'None'})
+      items[i].marketData.listings.push(emptyListing)
     }
 
     items[i].marketData.averagePrice = Math.round(items[i].marketData.averagePrice)
