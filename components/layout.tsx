@@ -2,7 +2,6 @@ import {NextPage} from "next";
 import React from "react";
 import Head from "next/head";
 import Header from "./home/Header";
-import '../styles/layout.module.css';
 
 type PageInfo = {
   children?: React.ReactNode
