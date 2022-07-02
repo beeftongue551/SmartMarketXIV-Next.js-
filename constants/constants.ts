@@ -1,3 +1,5 @@
+import {ItemDataType} from "../types/ItemDataType";
+
 export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental'] //日本のDC
 
 /* サーバー情報 */
@@ -66,3 +68,19 @@ export const CLASS_JOBS = [
 export const BEEF_API: string = 'http://beeftongue551.top:8080/'
 export const UNIVERSALIS_API_URL: string ='https://universalis.app/api/v2/'
 export const XIV_API_URL: string = 'https://xivapi.com/'
+
+// ローカルストレージキー
+export const FAVORITE_ITEM_LIST_KSY = 'favoriteItemList'
+
+/* デフォルトデータ */
+export const DEFAULT_ITEM_DATA: ItemDataType = {
+  equipmentLevel: 0,
+  id: 0,
+  itemCategory: "",
+  itemCategoryIcon: "",
+  itemIcon: "",
+  itemLevel: "",
+  itemName: "",
+  jobCategoryName: "",
+  recipeId: 0
+}
