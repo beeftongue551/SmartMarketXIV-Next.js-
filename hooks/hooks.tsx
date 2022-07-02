@@ -4,7 +4,11 @@ import {getNewsListLimit} from "../api/beef/NewsApi";
 import NewsList from "../components/home/NewsList";
 import {MarketDataType} from "../types/ItemDataType";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
+import {FAVORITE_ITEM_LIST_KSY} from "../constants/constants";
 
+/**
+ * お知らせ取得用カスタムフック
+ */
 export const useNews = (): JSX.Element => {
   const [news, setNews] =useState<NewsDataType[]>([])
 
@@ -22,6 +26,12 @@ export const useNews = (): JSX.Element => {
   return <NewsList newsData={news}></NewsList>
 }
 
+/**
+ * マーケット情報取得用カスタムフック
+ *
+ * @param worldOrDc DC名またはワールド名
+ * @param ids アイテムID
+ */
 export const useMarket: (worldOrDc: string, ids: (number | number[])) => MarketDataType = (worldOrDc: string, ids: number | number[]) => {
   const [market, setMarket] = useState<MarketDataType>({
       averagePrice: 0,
@@ -59,11 +69,43 @@ export const useMarket: (worldOrDc: string, ids: (number | number[])) => MarketD
         itemIds.push(id)
       })
     }
-    getMarketByIDs(itemIds, worldOrDc).then((marketData) => {
+    getMarketByIDs(itemIds, worldOrDc).then((marketData: MarketDataType) => {
       setMarket(marketData)
     })
   },[ids, worldOrDc])
-
-
   return market
+}
+
+export const useFavoriteData: () => [number[], { removeFavoriteItem: (itemId: number) => void; addFavoriteItem: (itemId: number) => void }] = () => {
+  const [favoriteList, setFavoriteList] = useState<number[] >([])
+
+  useEffect((): void => {
+    const json: string | null = localStorage.getItem(FAVORITE_ITEM_LIST_KSY)
+    if(json === null) {
+      return
+    }
+    const array: string[] = JSON.parse(json)
+    const idList:number[] = []
+    array.map((strNumber: string) => {
+      idList.push(parseInt(strNumber,10))
+    })
+    setFavoriteList(idList)
+  },[])
+
+  const addFavoriteItem: (itemId: number) => void = (itemId: number) => {
+    setFavoriteList(prevList => {
+      prevList.push(itemId)
+      return prevList
+    })
+    localStorage.setItem(FAVORITE_ITEM_LIST_KSY, JSON.stringify(favoriteList))
+  }
+
+  const removeFavoriteItem: (itemId: number) => void = (itemId: number) => {
+    setFavoriteList(prevList => {
+      return prevList.filter((id: number) => id !== itemId)
+    })
+    localStorage.setItem(FAVORITE_ITEM_LIST_KSY, JSON.stringify(favoriteList))
+  }
+
+  return [favoriteList, {addFavoriteItem, removeFavoriteItem}]
 }
