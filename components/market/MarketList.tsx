@@ -34,9 +34,9 @@ const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
     itemsData.map((itemData: ItemDataDetailType) =>
       <MarketExpansionBar market={itemData.marketData}
                           item={itemData.item}
-                          key={itemData.item.id}
                           dataCenter={searchData.dataCenter}
                           setRecipeData={setRecipeData}
+                          key={itemData.item.id}
       />
     )
   )

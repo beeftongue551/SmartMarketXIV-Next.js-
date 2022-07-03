@@ -76,39 +76,32 @@ export const useMarket: (worldOrDc: string, ids: (number | number[])) => MarketD
   return market
 }
 
-export const useFavoriteItemFlag: (itemId: number) => [boolean, { removeFavoriteItem: (itemId: number) => void; addFavoriteItem: (itemId: number) => void }] = (itemId: number) => {
-  const [favoriteList, setFavoriteList] = useState<number[] >([])
+export const useFavoriteItemFlag: (itemId: number) => [boolean, { changeFavoriteItem: (itemId: number) => void }] = (itemId: number) => {
   const [favoriteFlag, setFavoriteFlag] = useState<boolean>(false)
 
   useEffect((): void => {
-    const json: string | null = localStorage.getItem(FAVORITE_ITEM_LIST_KSY)
-    if(json === null) {
-      return
+    const json = localStorage.getItem(FAVORITE_ITEM_LIST_KSY)
+    let favoriteList: number[] = []
+    if(json !== null) {
+      favoriteList = JSON.parse(json)
     }
-    const array: string[] = JSON.parse(json)
-    const idList:number[] = []
-    array.map((strNumber: string) => {
-      idList.push(parseInt(strNumber,10))
-    })
-
-    setFavoriteList(idList)
     setFavoriteFlag(favoriteList.includes(itemId))
-  },[favoriteList, itemId])
+  },[])
 
-  const addFavoriteItem: (itemId: number) => void = (itemId: number) => {
-    setFavoriteList(prevList => {
-      prevList.push(itemId)
-      return prevList
-    })
+  const changeFavoriteItem: (itemId: number) => void = async (itemId: number) => {
+    const json = localStorage.getItem(FAVORITE_ITEM_LIST_KSY)
+    let favoriteList: number[] = []
+    if(json !== null) {
+      favoriteList = JSON.parse(json)
+    }
+    if (favoriteList.includes(itemId)) {
+      favoriteList = favoriteList.filter((id: number) => id !== itemId)
+    } else {
+      favoriteList.push(itemId)
+    }
+    setFavoriteFlag(prevState => !prevState)
     localStorage.setItem(FAVORITE_ITEM_LIST_KSY, JSON.stringify(favoriteList))
   }
 
-  const removeFavoriteItem: (itemId: number) => void = (itemId: number) => {
-    setFavoriteList(prevList => {
-      return prevList.filter((id: number) => id !== itemId)
-    })
-    localStorage.setItem(FAVORITE_ITEM_LIST_KSY, JSON.stringify(favoriteList))
-  }
-
-  return [favoriteFlag, {addFavoriteItem, removeFavoriteItem}]
+  return [favoriteFlag, {changeFavoriteItem}]
 }

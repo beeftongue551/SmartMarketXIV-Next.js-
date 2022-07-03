@@ -5,7 +5,9 @@ import XivIcon from "../other/XivIcon";
 import {useState} from "react";
 import {getRecipe} from "../../utils/RecipeUtils";
 import {RecipeType} from "../../types/RecipeType";
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
+import {useFavoriteItemFlag} from "../../hooks/hooks";
+import FavoriteStar from "../other/FavoriteStar";
 
 type Props = {
   market: MarketDataType
@@ -17,13 +19,15 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
 
   const {item, market} = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const router = useRouter()
+  const router: NextRouter = useRouter()
+  const [favoriteFlag,{changeFavoriteItem}] = useFavoriteItemFlag(item.id)
 
   /**
    * ExpansionBarの開閉状態を変更する
    */
   const openMarket: () => void = () => {
     setIsOpen(!isOpen)
+    console.log(favoriteFlag)
   }
 
   const openMarketDetail: () => void = () => {
@@ -50,7 +54,7 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
           <Col xs={10} md={11}>
             <Row>
               <Col xs={6} md={8}>
-                <b>{item.itemName}</b>
+                <b>{item.itemName}</b><FavoriteStar starFlag={favoriteFlag} onClick={() => changeFavoriteItem(item.id)}/>
               </Col>
               <Col xs={3} md={2} className="text-end">
                 IL: {item.itemLevel}
