@@ -76,8 +76,9 @@ export const useMarket: (worldOrDc: string, ids: (number | number[])) => MarketD
   return market
 }
 
-export const useFavoriteData: () => [number[], { removeFavoriteItem: (itemId: number) => void; addFavoriteItem: (itemId: number) => void }] = () => {
+export const useFavoriteItemFlag: (itemId: number) => [boolean, { removeFavoriteItem: (itemId: number) => void; addFavoriteItem: (itemId: number) => void }] = (itemId: number) => {
   const [favoriteList, setFavoriteList] = useState<number[] >([])
+  const [favoriteFlag, setFavoriteFlag] = useState<boolean>(false)
 
   useEffect((): void => {
     const json: string | null = localStorage.getItem(FAVORITE_ITEM_LIST_KSY)
@@ -89,8 +90,10 @@ export const useFavoriteData: () => [number[], { removeFavoriteItem: (itemId: nu
     array.map((strNumber: string) => {
       idList.push(parseInt(strNumber,10))
     })
+
     setFavoriteList(idList)
-  },[])
+    setFavoriteFlag(favoriteList.includes(itemId))
+  },[favoriteList, itemId])
 
   const addFavoriteItem: (itemId: number) => void = (itemId: number) => {
     setFavoriteList(prevList => {
@@ -107,5 +110,5 @@ export const useFavoriteData: () => [number[], { removeFavoriteItem: (itemId: nu
     localStorage.setItem(FAVORITE_ITEM_LIST_KSY, JSON.stringify(favoriteList))
   }
 
-  return [favoriteList, {addFavoriteItem, removeFavoriteItem}]
+  return [favoriteFlag, {addFavoriteItem, removeFavoriteItem}]
 }
