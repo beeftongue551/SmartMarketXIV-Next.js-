@@ -40,7 +40,7 @@ const getMarketData = async (items: ItemDataType[], dataCenter: string) => {
   return await getMarketByIDs(itemIds, dataCenter)
 }
 
-const tradableItemsGenerated = (items: ItemDataType[], marketData: any) => {
+export const tradableItemsGenerated = (items: ItemDataType[], marketData: any) => {
   let tradableItems: ItemDataDetailType[] = []
   items.forEach((item) => {
     if(marketData.items === undefined) {
