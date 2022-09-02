@@ -1,16 +1,9 @@
 import {ItemDataType} from "../types/ItemDataType";
 
-export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental'] //日本のDC
+export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental', 'Meteor'] //日本のDC
 
 /* サーバー情報 */
 export const SERVERS: Map<string, string[]> = new Map<string, string[]>([
-  ['Mana', ['Anima', 'Asura', 'Belias', 'Chocobo', 'Hades', 'Ixion', 'Mandragora', 'Masamune', 'Pandaemonium', 'Shinryu', 'Titan']],
-  ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima', 'Valefor', 'Yojimbo', 'Zeromus']],
-  ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Ramuh", "Tonberry", "Typhon", "Unicorn"]]
-])
-
-/* サーバー情報 */
-export const NEW_SERVERS: Map<string, string[]> = new Map<string, string[]>([
   ['Mana', ['Anima', 'Asura', 'Chocobo', 'Hades', 'Ixion', 'Masamune', 'Pandaemonium', 'Titan']],
   ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima']],
   ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Tonberry", "Typhon"]],
