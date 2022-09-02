@@ -27,7 +27,6 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
    */
   const openMarket: () => void = () => {
     setIsOpen(!isOpen)
-    console.log(favoriteFlag)
   }
 
   const openMarketDetail: () => void = () => {
