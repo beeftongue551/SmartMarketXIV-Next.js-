@@ -23,10 +23,28 @@ const Detail: NextPage = ():JSX.Element => {
 
 
   const [itemData, setItemData] = useState<ItemDataType>({
-    equipmentLevel: 0, id: 0, itemCategory: "", itemCategoryIcon: "", itemIcon: "", itemLevel: "", itemName: "", jobCategoryName: "", recipeId: 0
+    classJobCategory: "",
+    equipLevel: 0,
+    equipRestriction: false,
+    equipSlotCategory: "",
+    itemIcon: "",
+    itemId: 0,
+    itemLevel: "",
+    itemName: "",
+    itemSearchCategory: "",
+    itemSortCategory: 0,
+    itemUICategory: "",
+    marketable: false,
+    recipeId: 0
   })
+  const [server, setServer] = useState("Mana")
 
   useEffect(() => {
+
+    if (typeof dataCenter === "string") {
+      setServer(selectedDataCenter)
+    }
+
     //THINK: 無限に呼び出される
     if (typeof id === "string") {
       getItemByItemId(Number(id)).then((itemData) => {
@@ -35,7 +53,7 @@ const Detail: NextPage = ():JSX.Element => {
     }
   },[id])
 
-  const [server, setServer] = useState("Mana")
+
 
   return (
     <div className={styles.body}>
@@ -43,7 +61,7 @@ const Detail: NextPage = ():JSX.Element => {
         <ItemCard item={itemData} />
         <br/>
         <SelectServer dataCenter={selectedDataCenter} setServer={setServer} />
-        <PriceList itemId={itemData.id} worldOrDc={server} />
+        <PriceList itemId={itemData.itemId} worldOrDc={server} />
       </Layout>
     </div>
   )

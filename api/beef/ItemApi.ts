@@ -3,11 +3,24 @@ import {getResponseByGet} from "../../utils/urlUtils";
 import {SearchDataType} from "../../types/SearchDataType";
 
 export const getItemByItemId = async (itemId: number) => {
-  const url = BEEF_API + 'item/id/' + itemId
+  const url = BEEF_API + 'item/' + itemId
   return await getResponseByGet(url)
 }
 
-export const getTrebleItemByName = async (itemName: String, page = 1) => {
+export const getMarketableItem = async (searchData: SearchDataType, page = 1) => {
+  let url = BEEF_API + 'item?name=' + searchData.itemName + "&"
+  if (searchData.jobLevel !== 0) {
+    url += 'level=' + searchData.jobLevel + '&'
+  }
+  if (searchData.jobAbbreviation !== '') {
+    url += 'job=' + searchData.jobAbbreviation + '&'
+  }
+
+  url += 'page=' + page
+  return getResponseByGet(url)
+}
+
+export const getMarketableItemByName = async (itemName: String, page = 1) => {
   const url = BEEF_API + 'item/marketable/name/' + itemName + '/page/' + page
   return await getResponseByGet(url)
 }

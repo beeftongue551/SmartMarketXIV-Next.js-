@@ -1,14 +1,9 @@
-export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental'] //日本のDC
+import {ItemDataType} from "../types/ItemDataType";
+
+export const DATA_CENTERS: string[] = ['Mana', 'Gaia', 'Elemental', 'Meteor'] //日本のDC
 
 /* サーバー情報 */
 export const SERVERS: Map<string, string[]> = new Map<string, string[]>([
-  ['Mana', ['Anima', 'Asura', 'Belias', 'Chocobo', 'Hades', 'Ixion', 'Mandragora', 'Masamune', 'Pandaemonium', 'Shinryu', 'Titan']],
-  ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima', 'Valefor', 'Yojimbo', 'Zeromus']],
-  ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Ramuh", "Tonberry", "Typhon", "Unicorn"]]
-])
-
-/* サーバー情報 */
-export const NEW_SERVERS: Map<string, string[]> = new Map<string, string[]>([
   ['Mana', ['Anima', 'Asura', 'Chocobo', 'Hades', 'Ixion', 'Masamune', 'Pandaemonium', 'Titan']],
   ['Gaia', ['Alexander', 'Bahamut', 'Durandal', 'Fenrir', 'Ifrit', 'Ridill', 'Tiamat', 'Ultima']],
   ['Elemental', ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Tonberry", "Typhon"]],
@@ -63,6 +58,27 @@ export const CLASS_JOBS = [
 ]
 
 /* APIアクセスURL */
-export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+// export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+export const BEEF_API: string = 'http://localhost:8080/'
 export const UNIVERSALIS_API_URL: string ='https://universalis.app/api/v2/'
 export const XIV_API_URL: string = 'https://xivapi.com/'
+
+// ローカルストレージキー
+export const FAVORITE_ITEM_LIST_KSY = 'favoriteItemList'
+
+/* デフォルトデータ */
+export const DEFAULT_ITEM_DATA: ItemDataType = {
+  equipRestriction: false,
+  equipSlotCategory: "",
+  itemSearchCategory: "",
+  itemSortCategory: 0,
+  marketable: false,
+  equipLevel: 0,
+  itemId: 0,
+  itemUICategory: "",
+  itemIcon: "",
+  itemLevel: "",
+  itemName: "",
+  classJobCategory: "",
+  recipeId: 0
+}

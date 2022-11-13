@@ -17,7 +17,7 @@ type ListData = {
 const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
 
   const [recipeData, setRecipeData] = useState<RecipeType>({
-    amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", job: "", jobIcon: "", totalGill: 0
+    amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", craftType: "", totalGill: 0
   })
 
   const searchData = props.searchData || {
@@ -34,9 +34,9 @@ const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
     itemsData.map((itemData: ItemDataDetailType) =>
       <MarketExpansionBar market={itemData.marketData}
                           item={itemData.item}
-                          key={itemData.item.id}
                           dataCenter={searchData.dataCenter}
                           setRecipeData={setRecipeData}
+                          key={itemData.item.itemId}
       />
     )
   )

@@ -19,10 +19,10 @@ const ItemCard: NextPage<Props> = (props: Props): JSX.Element => {
             <Row>
               <Col xs={4} style={{color: "#758592"}}><h4>{item.itemLevel}</h4></Col>
               <Col xs={8}><h4>{item.itemName}</h4></Col>
-              <Col>{item.itemCategory}</Col>
+              <Col>{item.itemUICategory}</Col>
               {
-                item.equipmentLevel !== 1 &&
-                <Col style={{color: "#4171d6"}}>装備レベル: <b>{item.equipmentLevel}</b></Col>
+                item.equipLevel !== 1 &&
+                <Col style={{color: "#4171d6"}}>装備レベル: <b>{item.equipLevel}</b></Col>
               }
             </Row>
           </Col>
