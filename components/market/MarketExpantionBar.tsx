@@ -17,10 +17,10 @@ type Props = {
 }
 const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
 
-  const {item, market} = props
+  const {item, market, dataCenter} = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const router: NextRouter = useRouter()
-  const [favoriteFlag,{changeFavoriteItem}] = useFavoriteItemFlag(item.id)
+  const [favoriteFlag,{changeFavoriteItem}] = useFavoriteItemFlag(item.itemId)
 
   /**
    * ExpansionBarの開閉状態を変更する
@@ -30,7 +30,7 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
   }
 
   const openMarketDetail: () => void = () => {
-    router.push("/market/detail?id=" + item.id)
+    router.push("/market/detail?id=" + item.itemId + "&dataCenter=" + dataCenter)
   }
 
   /**
@@ -39,7 +39,7 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
    * @param recipeId レシピID
    */
   const getRecipeData: (recipeId: number) => Promise<void> = async (recipeId: number) => {
-    const recipeData: RecipeType = await getRecipe(recipeId, props.dataCenter)
+    const recipeData: RecipeType = await getRecipe(item.itemId ,recipeId, props.dataCenter)
     props.setRecipeData(recipeData)
   }
 
@@ -53,20 +53,19 @@ const MarketExpansionBar: NextPage<Props> = (props): JSX.Element => {
           <Col xs={10} md={11}>
             <Row>
               <Col xs={6} md={8}>
-                <b>{item.itemName}</b><FavoriteStar starFlag={favoriteFlag} onClick={() => changeFavoriteItem(item.id)}/>
+                <b>{item.itemName}</b><FavoriteStar starFlag={favoriteFlag} onClick={() => changeFavoriteItem(item.itemId)}/>
               </Col>
               <Col xs={3} md={2} className="text-end">
                 IL: {item.itemLevel}
               </Col>
               <Col xs={3} md={2} className="text-end">
-                IL: {item.equipmentLevel}
+                IL: {item.equipLevel}
               </Col>
               <Col xs={12} md={4} className="d-flex align-middle">
-                {item.itemCategory}
-                <XivIcon icon={item.itemCategoryIcon} alt={item.itemCategory} size={20}></XivIcon>
+                {item.itemUICategory}
               </Col>
               <Col xs={12} md={8} className="text-end">
-                {item.jobCategoryName}
+                {item.classJobCategory}
               </Col>
             </Row>
           </Col>

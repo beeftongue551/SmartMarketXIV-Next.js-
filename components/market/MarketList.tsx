@@ -17,7 +17,7 @@ type ListData = {
 const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
 
   const [recipeData, setRecipeData] = useState<RecipeType>({
-    amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", job: "", jobIcon: "", totalGill: 0
+    amount: 0, gillParOne: 0, id: 0, ingredients: [], itemIcon: "", itemName: "", craftType: "", totalGill: 0
   })
 
   const searchData = props.searchData || {
@@ -36,7 +36,7 @@ const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
                           item={itemData.item}
                           dataCenter={searchData.dataCenter}
                           setRecipeData={setRecipeData}
-                          key={itemData.item.id}
+                          key={itemData.item.itemId}
       />
     )
   )

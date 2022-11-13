@@ -1,62 +1,59 @@
-import {getTradableItemBySearchData, getTrebleItemByName} from "../api/beef/ItemApi";
+import {getMarketableItem} from "../api/beef/ItemApi";
 import {ItemDataDetailType, ItemDataType, ListingType} from "../types/ItemDataType";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
 import {SearchDataType} from "../types/SearchDataType";
 import dayjs from "dayjs";
 
 export const searchEvent = async (searchData: SearchDataType, page:number = 1) => {
-  if(searchData.isDetail) {
-    return await searchDetail(searchData, page)
-  }
   if(searchData.itemName === '' || searchData.dataCenter === '') {
     return
   }
 
-  const itemsData = await  getTrebleItemByName(searchData.itemName, page)
-  const marketData = await getMarketData(itemsData.items, searchData.dataCenter)
-  const tradableItems = tradableItemsGenerated(itemsData.items, marketData)
+  const itemsData = await getMarketableItem(searchData, page)
+  const marketData = await getMarketData(itemsData.xivItems, searchData.dataCenter)
+  const marketableItem = marketableItemsGenerated(itemsData.xivItems,marketData)
 
   return {
-    tradableItem: tradableItems,
+    tradableItem: marketableItem,
     pagination: itemsData.pagination
   }
 }
 
-const searchDetail = async (searchData: SearchDataType, page:number = 1) => {
-  const itemsData = await getTradableItemBySearchData(searchData, page)
-  const marketData = await getMarketData(itemsData.items, searchData.dataCenter)
-  const tradableItems: ItemDataDetailType[] = tradableItemsGenerated(itemsData.items, marketData)
-  return {
-    tradableItem: tradableItems,
-    pagination: itemsData.pagination
-  }
-}
+// const searchDetail = async (searchData: SearchDataType, page:number = 1) => {
+//   const itemsData = await getTradableItemBySearchData(searchData, page)
+//   const marketData = await getMarketData(itemsData.items, searchData.dataCenter)
+//   const tradableItems: ItemDataDetailType[] = tradableItemsGenerated(itemsData.items, marketData)
+//   return {
+//     tradableItem: tradableItems,
+//     pagination: itemsData.pagination
+//   }
+// }
 
 const getMarketData = async (items: ItemDataType[], dataCenter: string) => {
   const itemIds: number[] = []
   items.forEach((item) => {
-    itemIds.push(item.id)
+    itemIds.push(item.itemId)
   })
   return await getMarketByIDs(itemIds, dataCenter)
 }
 
-export const tradableItemsGenerated = (items: ItemDataType[], marketData: any) => {
-  let tradableItems: ItemDataDetailType[] = []
+export const marketableItemsGenerated = (items: ItemDataType[], marketData: any) => {
+  let marketableItem: ItemDataDetailType[] = []
   items.forEach((item) => {
     if(marketData.items === undefined) {
-      tradableItems.push({
+      marketableItem.push({
         item: item,
         marketData: marketData
       })
     } else {
-      tradableItems.push({
+      marketableItem.push({
         item: item,
-        marketData: marketData.items[item.id]
+        marketData: marketData.items[item.itemId]
       })
     }
   })
-  tradableItems = marketCheck(tradableItems)
-  return tradableItems
+  marketableItem = marketCheck(marketableItem)
+  return marketableItem
 }
 
 const marketCheck = (items: ItemDataDetailType[]) => {

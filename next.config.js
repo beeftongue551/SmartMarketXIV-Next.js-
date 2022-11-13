@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: ['xivapi.com']
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
     optimizeFonts: true,
   },

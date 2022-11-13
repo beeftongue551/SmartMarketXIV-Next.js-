@@ -58,7 +58,8 @@ export const CLASS_JOBS = [
 ]
 
 /* APIアクセスURL */
-export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+// export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+export const BEEF_API: string = 'http://localhost:8080/'
 export const UNIVERSALIS_API_URL: string ='https://universalis.app/api/v2/'
 export const XIV_API_URL: string = 'https://xivapi.com/'
 
@@ -67,13 +68,17 @@ export const FAVORITE_ITEM_LIST_KSY = 'favoriteItemList'
 
 /* デフォルトデータ */
 export const DEFAULT_ITEM_DATA: ItemDataType = {
-  equipmentLevel: 0,
-  id: 0,
-  itemCategory: "",
-  itemCategoryIcon: "",
+  equipRestriction: false,
+  equipSlotCategory: "",
+  itemSearchCategory: "",
+  itemSortCategory: 0,
+  marketable: false,
+  equipLevel: 0,
+  itemId: 0,
+  itemUICategory: "",
   itemIcon: "",
   itemLevel: "",
   itemName: "",
-  jobCategoryName: "",
+  classJobCategory: "",
   recipeId: 0
 }

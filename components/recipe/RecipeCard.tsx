@@ -51,7 +51,7 @@ const RecipeCard: NextPage<Props> = (props: Props): JSX.Element => {
       <Card style={{width: '90%'}} className="mx-auto">
         <Card.Body>
           <Card.Title><b>{recipeData.itemName}</b></Card.Title>
-          <Card.Subtitle>作成JOB:{recipeData.job}</Card.Subtitle>
+          <Card.Subtitle>作成JOB:{recipeData.craftType}</Card.Subtitle>
         </Card.Body>
         <ListGroup className="list-group-flush">
           {ingredientsList}

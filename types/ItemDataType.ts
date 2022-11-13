@@ -1,13 +1,18 @@
+
 export type ItemDataType = {
-  id: number
+  itemId: number
   itemIcon: string
   itemName: string
   itemLevel: string
-  itemCategory: string
-  itemCategoryIcon: string
+  itemSearchCategory: string
+  itemSortCategory: number
+  itemUICategory: string
+  classJobCategory: string
+  equipLevel: number
+  equipRestriction: boolean
+  equipSlotCategory: string
+  marketable: boolean
   recipeId: number
-  equipmentLevel: number
-  jobCategoryName: string
 }
 
 export type MarketDataType = {
