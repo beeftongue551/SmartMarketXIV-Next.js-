@@ -58,8 +58,8 @@ export const CLASS_JOBS = [
 ]
 
 /* APIアクセスURL */
-// export const BEEF_API: string = 'http://beeftongue551.top:8080/'
-export const BEEF_API: string = 'http://localhost:8080/'
+export const BEEF_API: string = 'http://beeftongue551.top:8080/'
+// export const BEEF_API: string = 'http://localhost:8080/'
 export const UNIVERSALIS_API_URL: string ='https://universalis.app/api/v2/'
 export const XIV_API_URL: string = 'https://xivapi.com/'
 

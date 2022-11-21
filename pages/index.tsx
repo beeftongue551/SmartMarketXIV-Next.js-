@@ -34,6 +34,12 @@ const Home: NextPage = () => {
                 text="アイテムを検索して各DCのマーケット状況を見たい場合はこちら"
                 jump="/market"/>
             </Col>
+            <Col className="col-auto">
+              <HomeCard
+                title="お気に入りアイテムへ"
+                text="お気に入りに登録したアイテムを確認したい場合はこちらへ"
+                jump="/favorite"/>
+            </Col>
           </Row>
         </Container>
         <br />

@@ -10,11 +10,19 @@ import {FAVORITE_ITEM_LIST_KSY} from "../constants/constants";
 import {getItemByItemId} from "../api/beef/ItemApi";
 import {getMarketByIDs} from "../api/universalis/MarketApi";
 import {marketableItemsGenerated} from "../utils/SearchUtils";
+import {SearchDataType} from "../types/SearchDataType";
 
 const Favorite:NextPage = (): JSX.Element => {
 
   const [favoriteItems, setFavoriteItems] = useState<ItemDataDetailType[]>([])
   let favoriteList: number[] = []
+  const [searchData, setSearchData] = useState<SearchDataType>({
+    isDetail: false,
+    itemName: '',
+    dataCenter: '',
+    jobAbbreviation: undefined,
+    jobLevel: undefined
+  })
 
   useEffect(() => {
     updateEvent("Mana")
@@ -38,6 +46,13 @@ const Favorite:NextPage = (): JSX.Element => {
       const itemData: ItemDataType = await getItemByItemId(Number(itemId))
       itemsData.push(itemData)
     }
+    setSearchData({
+      isDetail: false,
+      itemName: '',
+      dataCenter: dataCenter,
+      jobAbbreviation: undefined,
+      jobLevel: undefined
+    })
     setFavoriteItems(marketableItemsGenerated(itemsData, marketData))
   }
 
@@ -49,7 +64,7 @@ const Favorite:NextPage = (): JSX.Element => {
           <div style={{width: '90%'}} className="mx-auto">
             <InputDataCenter changeDCName={updateEvent}></InputDataCenter>
           </div>
-          <MarketList itemsData={favoriteItems} />
+          <MarketList itemsData={favoriteItems} searchData={searchData}/>
         </Layout>
       </div>
   )

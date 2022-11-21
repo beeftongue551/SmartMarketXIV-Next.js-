@@ -44,7 +44,7 @@ const MarketList: NextPage<ListData> = (props: ListData): JSX.Element => {
  return(
    <div>
      <Stack gap={2}>
-       <RecipeCard recipeData={recipeData} setRecipeData={setRecipeData}/>
+       <RecipeCard recipeData={recipeData} setRecipeData={setRecipeData} dataCenter={searchData.dataCenter} />
        {listItems}
     </Stack>
    </div>

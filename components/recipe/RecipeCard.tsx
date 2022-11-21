@@ -7,11 +7,12 @@ import {resetRecipeData} from "../../utils/RecipeUtils";
 type Props = {
   recipeData: RecipeType
   setRecipeData: Function
+  dataCenter: string
 }
 
 const RecipeCard: NextPage<Props> = (props: Props): JSX.Element => {
 
-  const {recipeData} = props
+  const {recipeData, dataCenter} = props
 
   /**
    * レシピデータを空に変更しレシピカードを非表示にする
@@ -20,13 +21,17 @@ const RecipeCard: NextPage<Props> = (props: Props): JSX.Element => {
     props.setRecipeData(resetRecipeData())
   }
 
+  const openMarketDetail: (itemId: number) => void = (itemId: number) => {
+    window.open("/market/detail?id="+ itemId + "&dataCenter=" + dataCenter)
+  }
+
 
   /**
    * 素材データリストを作成する
    */
   const ingredientsList = (
     recipeData.ingredients.map((ingredient) => (
-      <ListGroupItem key={ingredient.itemId}>
+      <ListGroupItem key={ingredient.itemId} onClick={() =>openMarketDetail(ingredient.itemId)}>
         <Row>
           <Col xs={2} md={2}>
             <XivIcon icon={ingredient.itemIcon} alt={ingredient.itemName} size={30} />
@@ -53,7 +58,7 @@ const RecipeCard: NextPage<Props> = (props: Props): JSX.Element => {
           <Card.Title><b>{recipeData.itemName}</b></Card.Title>
           <Card.Subtitle>作成JOB:{recipeData.craftType}</Card.Subtitle>
         </Card.Body>
-        <ListGroup className="list-group-flush">
+        <ListGroup className="list-group-flush" >
           {ingredientsList}
         </ListGroup>
         <Card.Body>
